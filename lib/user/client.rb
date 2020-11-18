@@ -22,7 +22,7 @@ module User
     }
 
     def get_user_by_id(user_id, options = {})
-      url = @url + PATH[:email] + user_id.to_s
+      url = @url + PATH[:get_user_by_id] + user_id.to_s
       auth = {
         username: @username,
         password: @password
