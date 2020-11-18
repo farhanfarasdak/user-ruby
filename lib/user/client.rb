@@ -1,24 +1,7 @@
 module User
   class Client
-    include HTTParty
-    format :json
-
-    def initialize(
-      url = nil,
-      username = nil,
-      password = nil,
-      source = nil,
-      hostname = nil
-    )
-      @url =  url
-      @username = username
-      @password = password
-      @source = source
-      @hostname = hostname
-    end
 
     def initialize(params = {})
-      # Default is set to telolet kube staging
       @host = params[:host]
       @user = params[:username]
       @pass = params[:password]
@@ -40,7 +23,7 @@ module User
     }
 
     def get_user_by_id(user_id, options = {})
-      url = @url + PATH[:get_user_by_id] + user_id.to_s
+      url = @host + PATH[:get_user_by_id] + user_id.to_s
       get_data(url)
     end
 
